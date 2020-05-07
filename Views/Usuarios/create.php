@@ -26,12 +26,17 @@
         </li>
         <li class="nav-item">
             <a role="tab" class="nav-link" id="tab-1" data-toggle="tab" href="#tab-content-1">
-                <span>Lista de Usuarios</span>
+                <span id="boton-usuarios" >Lista de Usuarios</span>
             </a>
         </li>
         <li class="nav-item">
             <a role="tab" class="nav-link" id="tab-2" data-toggle="tab" href="#tab-content-2">
-                <span>Crear/Ver Clientes</span>
+                <span id="boton-clientes">Ver Clientes</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a role="tab" class="nav-link" id="tab-3" data-toggle="tab" href="#tab-content-3">
+                <span>Dar de alta Clientes</span>
             </a>
         </li>
     </ul>
@@ -41,30 +46,33 @@
                 <div class="col-md-12">
                     <div class="main-card mb-3 card">
                         <div class="card-body"><h5 class="card-title">Controls Types</h5>
-                            <form  action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                <div class="position-relative form-group">
-                                    <label for="nombre" class="">Nombre</label>
-                                    <input v-model="nombre" name="nombre" id="nombre" placeholder="Nombre del Usuario" type="text" class="form-control">
-                                </div>
-                                <div class="position-relative form-group">
-                                    <label for="username" class="">Nombre de Usuario (username)</label>
-                                    <input v-model="username" name="username" id="username" placeholder="Nombre de usuario" type="text" class="form-control">
-                                    <small class="text-muted">*Con este nombre es con el que accederas al WMC</small>
-                                </div>
-                                <div class="position-relative form-group">
-                                    <label for="password" class="">Password</label>
-                                    <input v-model="password" name="password" id="password" placeholder="Ingresa la Contraseña"
-                                           type="password" class="form-control">
-                                </div>
-                                <div class="position-relative form-group">
-                                    <label for="permiso" class="">Rol</label>
-                                    <input type="hidden" v-model="rol">
-                                    <select v-model="rol" name="permiso" id="permiso" class="form-control" >
-                                        <option disabled value="">Seleccione un elemento</option>
-                                        <option v-for="permisos in permiso">{{permisos}}</option>
-                                    </select></div>
-                                <button class="mt-1 btn btn-primary" v-on:click="registrarUsuario()">Enviar</button>
-                            </form>
+                            <div id="formulario">
+                                <form  id="userdata" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="position-relative form-group">
+                                        <label for="nombre" class="">Nombre</label>
+                                        <input name="nombre" id="nombre" placeholder="Nombre del Usuario" type="text" class="form-control">
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="username" class="">Nombre de Usuario (username)</label>
+                                        <input name="username" id="username" placeholder="Nombre de usuario" type="text" class="form-control">
+                                        <small class="text-muted">*Con este nombre es con el que accederas al WMC</small>
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="password" class="">Password</label>
+                                        <input name="password" id="password" placeholder="Ingresa la Contraseña"
+                                               type="password" class="form-control">
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="permiso" class="">Rol</label>
+                                        <select name="permiso" id="permiso" class="form-control" >
+                                            <option disabled value="">Seleccione un elemento</option>
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Moderador</option>
+                                        </select>
+                                    </div>
+                                    <button class="mt-1 btn btn-primary" id="botonenviar" type="button">Enviar</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,154 +81,12 @@
         </div>
         <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Input Groups</h5>
+                        <div class="card-body"><h5 class="card-title">Lista de Usuarios</h5>
                             <div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">@</span></div>
-                                    <input placeholder="username" type="text" class="form-control"></div>
-                                <br>
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text"><input aria-label="Checkbox for following text input" type="checkbox" class=""></span></div>
-                                    <input placeholder="Check it out" type="text" class="form-control"></div>
-                                <br>
-                                <div class="input-group"><input placeholder="username" type="text" class="form-control">
-                                    <div class="input-group-append"><span class="input-group-text">@example.com</span></div>
-                                </div>
-                                <br>
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">$</span><span class="input-group-text">$</span></div>
-                                    <input placeholder="Dolla dolla billz yo!" type="text" class="form-control">
-                                    <div class="input-group-append"><span class="input-group-text">$</span><span class="input-group-text">$</span></div>
-                                </div>
-                                <br>
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-                                    <input placeholder="Amount" step="1" type="number" class="form-control">
-                                    <div class="input-group-append"><span class="input-group-text">.00</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Input Group Button Dropdown</h5>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-secondary">Button Dropdown</button>
-                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu"><h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                        <button type="button" disabled="" tabindex="-1" class="disabled dropdown-item">Action</button>
-                                        <button type="button" tabindex="0" class="dropdown-item">Another Action</button>
-                                        <div tabindex="-1" class="dropdown-divider"></div>
-                                        <button type="button" tabindex="0" class="dropdown-item">Another Action</button>
-                                    </div>
-                                </div>
-                                <input type="text" class="form-control"></div>
-                        </div>
-                    </div>
-                    <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Input Group Button Shorthand</h5>
-                            <div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-secondary">To the Left!</button>
-                                    </div>
-                                    <input type="text" class="form-control"></div>
-                                <br>
-                                <div class="input-group"><input type="text" class="form-control">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-secondary">To the Right!</button>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-danger">To the Left!</button>
-                                    </div>
-                                    <input placeholder="and..." type="text" class="form-control">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-success">To the Right!</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Input Group Sizing</h5>
-                            <div>
-                                <div class="input-group input-group-lg">
-                                    <div class="input-group-prepend"><span class="input-group-text">@lg</span></div>
-                                    <input type="text" class="form-control"></div>
-                                <br>
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">@normal</span></div>
-                                    <input type="text" class="form-control"></div>
-                                <br>
-                                <div class="input-group input-group-sm">
-                                    <div class="input-group-prepend"><span class="input-group-text">@sm</span></div>
-                                    <input type="text" class="form-control"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Input Group Addon</h5>
-                            <div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">To the Left!</span></div>
-                                    <input type="text" class="form-control"></div>
-                                <br>
-                                <div class="input-group"><input type="text" class="form-control">
-                                    <div class="input-group-append"><span class="input-group-text">To the Right!</span></div>
-                                </div>
-                                <br>
-                                <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text">To the Left!</span></div>
-                                    <input placeholder="and..." type="text" class="form-control">
-                                    <div class="input-group-append"><span class="input-group-text">To the Right!</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Input Group Button</h5>
-                            <div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-secondary">I'm a button</button>
-                                    </div>
-                                    <input type="text" class="form-control"></div>
-                                <br>
-                                <div class="input-group"><input type="text" class="form-control">
-                                    <div class="input-group-append">
-                                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-secondary">Button Dropdown</button>
-                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu"><h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                            <button type="button" disabled="" tabindex="-1" class="disabled dropdown-item">Action</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Another Action</button>
-                                            <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0" class="dropdown-item">Another Action</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary">Split Button</button>
-                                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropdown-toggle-split btn btn-outline-secondary"><span
-                                                class="sr-only">Toggle Dropdown</span></button>
-                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu"><h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                            <button type="button" disabled="" tabindex="-1" class="disabled dropdown-item">Action</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Another Action</button>
-                                            <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0" class="dropdown-item">Another Action</button>
-                                        </div>
-                                    </div>
-                                    <input placeholder="and..." type="text" class="form-control">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-secondary">I'm a button</button>
-                                    </div>
-                                </div>
+                                <div id="#loading"></div>
+                                <div id="list-usuarios"></div>
                             </div>
                         </div>
                     </div>
@@ -230,93 +96,13 @@
         <div class="tab-pane tabs-animation fade" id="tab-content-2" role="tabpanel">
             <form class="">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="main-card mb-3 card">
-                            <div class="card-body"><h5 class="card-title">Checkboxes</h5>
+                            <div class="card-body"><h5 class="card-title">Clientes <a onclick="clienteAlta()" href="#clientesAlta" class="btn btn-info float-right">Dar de alta Cliente</a onclick="clienteAlta()"></h5>
                                 <div class="position-relative form-group">
                                     <div>
-                                        <div class="custom-checkbox custom-control"><input type="checkbox" id="exampleCustomCheckbox" class="custom-control-input"><label class="custom-control-label" for="exampleCustomCheckbox">Check this
-                                                custom checkbox</label></div>
-                                        <div class="custom-checkbox custom-control"><input type="checkbox" id="exampleCustomCheckbox2" class="custom-control-input"><label class="custom-control-label" for="exampleCustomCheckbox2">Or this
-                                                one</label></div>
-                                        <div class="custom-checkbox custom-control"><input type="checkbox" id="exampleCustomCheckbox3" disabled="" class="custom-control-input"><label class="custom-control-label" for="exampleCustomCheckbox3">But
-                                                not this disabled one</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main-card mb-3 card">
-                            <div class="card-body"><h5 class="card-title">Inline</h5>
-                                <div class="position-relative form-group">
-                                    <div>
-                                        <div class="custom-checkbox custom-control custom-control-inline"><input type="checkbox" id="exampleCustomInline" class="custom-control-input"><label class="custom-control-label"
-                                                                                                                                                                                              for="exampleCustomInline">An inline custom
-                                                input</label></div>
-                                        <div class="custom-checkbox custom-control custom-control-inline"><input type="checkbox" id="exampleCustomInline2" class="custom-control-input"><label class="custom-control-label"
-                                                                                                                                                                                               for="exampleCustomInline2">and another one</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="main-card mb-3 card">
-                            <div class="card-body"><h5 class="card-title">Radios</h5>
-                                <div class="position-relative form-group">
-                                    <div>
-                                        <div class="custom-radio custom-control"><input type="radio" id="exampleCustomRadio" name="customRadio" class="custom-control-input"><label class="custom-control-label" for="exampleCustomRadio">Select
-                                                this custom radio</label></div>
-                                        <div class="custom-radio custom-control"><input type="radio" id="exampleCustomRadio2" name="customRadio" class="custom-control-input"><label class="custom-control-label" for="exampleCustomRadio2">Or
-                                                this one</label></div>
-                                        <div class="custom-radio custom-control"><input type="radio" id="exampleCustomRadio3" disabled="" class="custom-control-input"><label class="custom-control-label" for="exampleCustomRadio3">But not this
-                                                disabled one</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main-card mb-3 card">
-                            <div class="card-body"><h5 class="card-title">Form Select</h5>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="position-relative form-group"><label for="exampleCustomSelect" class="">Custom Select</label><select type="select" id="exampleCustomSelect" name="customSelect" class="custom-select">
-                                                <option value="">Select</option>
-                                                <option>Value 1</option>
-                                                <option>Value 2</option>
-                                                <option>Value 3</option>
-                                                <option>Value 4</option>
-                                                <option>Value 5</option>
-                                            </select></div>
-                                        <div class="position-relative form-group"><label for="exampleCustomMutlipleSelect" class="">Custom Multiple Select</label><select multiple="" type="select" id="exampleCustomMutlipleSelect"
-                                                                                                                                                                          name="customSelect" class="custom-select">
-                                                <option value="">Select</option>
-                                                <option>Value 1</option>
-                                                <option>Value 2</option>
-                                                <option>Value 3</option>
-                                                <option>Value 4</option>
-                                                <option>Value 5</option>
-                                            </select></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="position-relative form-group"><label for="exampleCustomSelectDisabled" class="">Custom Select Disabled</label><select type="select" id="exampleCustomSelectDisabled" name="customSelect"
-                                                                                                                                                                          disabled="" class="custom-select">
-                                                <option value="">Select</option>
-                                                <option>Value 1</option>
-                                                <option>Value 2</option>
-                                                <option>Value 3</option>
-                                                <option>Value 4</option>
-                                                <option>Value 5</option>
-                                            </select></div>
-                                        <div class="position-relative form-group"><label for="exampleCustomMutlipleSelectDisabled" class="">Custom Multiple Select Disabled</label><select multiple="" type="select"
-                                                                                                                                                                                           id="exampleCustomMutlipleSelectDisabled"
-                                                                                                                                                                                           name="customSelect" disabled="" class="custom-select">
-                                                <option value="">Select</option>
-                                                <option>Value 1</option>
-                                                <option>Value 2</option>
-                                                <option>Value 3</option>
-                                                <option>Value 4</option>
-                                                <option>Value 5</option>
-                                            </select></div>
+                                        <div id="listarClientes"></div>
+                                        <div id="list-clientes"></div>
                                     </div>
                                 </div>
                             </div>
@@ -325,88 +111,195 @@
                 </div>
             </form>
         </div>
+        <div class="tab-pane tabs-animation fade" id="tab-content-3" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-card mb-3 card">
+                            <div class="card-body"><h5 class="card-title">Dar de alta Clientes</h5>
+                                <div class="position-relative form-group">
+                                    <div>
+                                        <?php
+                                        require '../../Controllers/Config/db2.php';
+
+                                        $query = 'SELECT id, nombre FROM usuarios';
+                                        $res = mysqli_query($conn, $query);
+                                        ?>
+                                        <?php
+                                        if(isset($errorCliente)){
+                                            echo '<span style="color: #ff0000;">' . $errorCliente . '</span>';
+                                        }
+                                        ?>
+                                        <form id="clientedata" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                                            <div class="position-relative form-group">
+                                                <label for="cliente" class="">Cliente</label>
+                                                <input name="cliente" id="cliente" placeholder="Nombre del cliente" type="text" class="form-control">
+                                            </div>
+                                            <div class="position-relative form-group">
+                                                <label for="nss" class="">NSS</label>
+                                                <input name="nss" id="nss" placeholder="Numero de Seguro Social (NSS)" type="text" class="form-control">
+                                            </div>
+                                            <div class="position-relative form-group">
+                                                <label for="marca_id" class="">Marca</label>
+                                                <select name="marca_id" id="marca_id" class="form-control" >
+                                                    <option disabled value="1">Seleccione un elemento</option>
+                                                    <option value="2">Marca 1</option>
+                                                </select>
+                                            </div>
+                                            <div class="position-relative form-group">
+                                                <label for="sucursal_id" class="">Sucursal</label>
+                                                <select name="sucursal_id" id="sucursal_id" class="form-control" >
+                                                    <option disabled value="1">Seleccione un elemento</option>
+                                                    <option value="2">sucursal 1</option>
+                                                </select>
+                                            </div>
+                                            <div class="position-relative form-group">
+                                                <label for="user_id" class="">Jefe Inmediato</label>
+                                                <select name="user_id" id="user_id" class="form-control" >
+                                                    <option disabled value="">Seleccione un elemento</option>
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($res))
+                                                    {
+
+                                                        ?>
+                                                        <option value="<?php print "".$row['id'] .""; ?>"><?php print $row['nombre']; ?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <button class="mt-1 btn btn-primary" id="clientebutton" type="button">Enviar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
     </div>
-<!--vuejs-->
+    <link rel="stylesheet" href="/assets/css/toastr.min.css">
     <script src="/assets/scripts/jquery-3.5.0.js"></script>
     <script type="text/javascript" src="/assets/scripts/main.js"></script>
-    <script src="/assets/js/vue.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
-<script>
-    const app = new Vue({
-        el: '#app',
-        data (){
-            return {
-                nombre: '',
-                permiso: ['Administrador', 'Moderador'],
-                username: '',
-                password: '',
-                rol: '',
-                errorMostrarMsjUser : [],
-                errorUser: 0
-            }
-        },
-        methods: {
-            validarUsers()
-            {
-                this.errorUser = 0;
-                this.errorMostrarMsjUser = [];
-                if(!this.nombre) this.errorMostrarMsjUser.push("El nombre no puede estar vacio");
-                if(!this.username) this.errorMostrarMsjUser.push("El nombre de usuario no puede estar vacio");
-                if(!this.password) this.errorMostrarMsjUser.push("La contraseña es obligatoria");
-                if(!this.rol) this.errorMostrarMsjUser.push("El Rol de usuario o Permisos es obligatorio");
-                if(this.errorMostrarMsjUser.length) this.errorUser = 1;
-
-                return this.errorUser;
-
-            },
-            registrarUsuario()
-            {
-                if(this.validarUsers())
-                {
-                    return;
-                }
-                let me = this;
-                 axios.post('/Controllers/CreateUser', {
-                     'nombre': this.nombre,
-                     'username': this.username,
-                     'pswd': this.password,
-                     'rol': this.rol
-                 }).then(res => {
-                     alert("el usuario fue creado correctamente" + res)
-                 }).catch(err => {
-
-                 })
-            }
-        },
-        mounted(){
-            console.log('componente montado');
+    <script src="/assets/scripts/toastr.min.js"></script>
+    <script>
+    function validarUser(){
+        if($("#nombre").val() == ""){
+            toastr.error('El campo Nombre no pede estar vacio', {timeOut: 5000, progressBar: true});
+            $("#nombre").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            return false;
         }
-    })
-</script>
-<style>
-    .modal-content{
-        width: 100% !important;
-        position: absolute !important;
-        margin-top: 100px;
+        if($("#username").val() == ""){
+            toastr.error('El campo Nombre de Usuario no puede estar vacío.', {timeOut: 5000, progressBar: true});
+            $("#username").focus();
+            return false;
+        }
+        if($("#password").val() == ""){
+            toastr.error('El campo Password no puede estar vacío.', {timeOut: 5000, progressBar: true});
+            $("#password").focus();
+            return false;
+        }
+        return true;
     }
-    .mostrar{
-        display: list-item !important;
-        opacity: 1 !important;
-        position: absolute !important;
-        background-color: #3c29297a !important;
+
+    $(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+        $("#botonenviar").click( function() {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+            if(validarUser()){                               // Primero validará el formulario.
+                $.post("/Controllers/UserController.php", $("#userdata").serialize(), function(res){
+                   if(res == 1){
+                        toastr.success('El Usuario se registro correctamente.', {timeOut: 5000, progressBar: true});
+                       $('#userdata').trigger("reset");
+                    } else {
+                       toastr.error('Error al registrar el usuario.', {timeOut: 5000, progressBar: true});
+                    }
+                });
+            }
+        });
+    });
+
+    $("#boton-usuarios").on("click", getUsers);
+    function getUsers() {
+        $.ajax({
+            url: '/Controllers/listarUsuarios.php',
+            type: 'get',
+            success: function(event) {
+                document.getElementById('list-usuarios').innerHTML = event;
+            }
+
+        });
     }
-    .div-error{
-        display: flex;
-        justify-content: center;
+
+    $("#boton-clientes").on("click", getCliente);
+    function getCliente(){
+        $.ajax({
+            url: '/Controllers/listarClientes.php',
+            type:'get',
+            success: function (event) {
+                document.getElementById('list-clientes').innerHTML = event;
+
+            }
+        })
     }
-    .text-error{
-        color: red !important;
-        font-weight: bold;
-    }
-    .modal-enter .modal-container,
-    .modal-leave-active .modal-container {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-</style>
-<!--endvuejs-->
+    </script>
+
+    <script>
+        function clienteAlta(){
+            jQuery.ajax({
+                url: 'Views/clientes/create.php',
+                type: 'POST',
+                beforeSend: function () {
+                    jQuery("#formalta").html("<br /><br /><i class='icon-spinner icon-spin orange bigger-125'></i>&nbsp;&nbsp;Procesando, Espere por favor...");
+                },
+                success: function (data) {
+                    jQuery("#formalta").html(data);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function validarUser(){
+            if($("#cliente").val() == ""){
+                toastr.error('El campo Nombre no pede estar vacio', {timeOut: 5000, progressBar: true});
+                $("#cliente").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+                return false;
+            }
+            if($("#nss").val() == ""){
+                toastr.error('El campo NSS o numero de seguro social no puede estar vacío.', {timeOut: 5000, progressBar: true});
+                $("#nss").focus();
+                return false;
+            }
+            if($("#user_id").val() == ""){
+                toastr.error('El cliente debe estar refenciado por un Usuario.', {timeOut: 5000, progressBar: true});
+                $("#user_id").focus();
+                return false;
+            }
+            if($("#sucursal_id").val() == ""){
+                toastr.error('El cliente debe estar refenciado a una sucursal.', {timeOut: 5000, progressBar: true});
+                $("#sucursal_id").focus();
+                return false;
+            }
+            if($("#marca_id").val() == ""){
+                toastr.error('El cliente debe estar refenciado a una marca.', {timeOut: 5000, progressBar: true});
+                $("#marca_id").focus();
+                return false;
+            }
+            return true;
+        }
+
+        $(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+            $("#clientebutton").click( function() {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+                if(validarUser()){                               // Primero validará el formulario.
+                    $.post("/Controllers/ClienteController.php", $("#clientedata").serialize(), function(res){
+                        if(res == 1){
+                            toastr.success('El Cliente se dio de alta correctamente.', {timeOut: 5000, progressBar: true});
+                            $('#clientedata').trigger("reset");
+                        } else {
+                            toastr.error('Error al registrar el cliente.', {timeOut: 5000, progressBar: true});
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+

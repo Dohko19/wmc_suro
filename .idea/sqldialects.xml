@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/Models/User.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Controllers/ClienteController.php" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/Controllers/UserController.php" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/Models/User.php" dialect="MariaDB" />
+  </component>
+  <component name="SqlResolveMappings">
+    <file url="file://$PROJECT_DIR$/Controllers/UserController.php" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;5cb523a0-e607-4037-942e-d5ee0607ed94&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;schema&quot;,     &quot;node&quot;:{      &quot;name&quot;:{       &quot;@qname&quot;:&quot;wmc_suro&quot;      }     }    }   }  } }}" />
   </component>
 </project>

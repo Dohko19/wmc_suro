@@ -29,7 +29,7 @@
                     <div class="col-md-4">
                         <?php
                         if(isset($errorLogin)){
-                            echo '<span style="color: red;">' . $errorLogin . '</span>';
+                            echo '<span style="color: #ff0000;">' . $errorLogin . '</span>';
                         }
                         ?>
                         <div class="mb-6 card card-body"><h5 class="card-title">Iniciar Sesion</h5>

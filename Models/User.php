@@ -4,6 +4,7 @@ class User extends DB
 {
     private $nombre;
     private $username;
+    private $permisos;
 
     public function userExists($user, $pass)
     {
@@ -30,6 +31,7 @@ class User extends DB
         {
             $this->nombre = $currentUser['nombre'];
             $this->username = $currentUser['username'];
+            $this->permisos = $currentUser['permisos'];
         }
     }
 
@@ -41,5 +43,10 @@ class User extends DB
     public function getUsername()
     {
         return $this->username;
+    }
+
+    public function  getPermiso()
+    {
+        return $this->permisos;
     }
 }
