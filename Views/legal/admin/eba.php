@@ -58,7 +58,7 @@ $res = mysqli_query($conn, $query);
                                                max="12"
                                                class="form-control">
                                         <br>
-                                        <input name="anio" id="anio" placeholder="Periodo (año ej. 2020))" type="number"
+                                        <input name="anio" id="anio" placeholder="Periodo (año ej. 2020)" type="number"
                                                min="1970"
                                                max="2050"
                                                class="form-control">
@@ -132,64 +132,47 @@ $res = mysqli_query($conn, $query);
                                 <form  id="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="position-relative form-group">
                                         <label for="periodo" class="">Periodo</label>
-                                        <input name="periodo" id="periodo" placeholder="Periodo (numero de mes ej. 1)" type="number"
+                                        <br>
+                                        Numero de Mes:
+                                        <input name="nomes" id="nomes" placeholder="Numero de Mes" type="number"
                                                min="1"
                                                max="12"
                                                class="form-control">
                                         <br>
-                                        <input name="anio" id="anio" placeholder="Periodo (año ej. 2020))" type="number"
+                                        Mes:
+                                        <select class="form-control" name="mes" id="mes">
+                                            <option value="Enero">Enero</option>
+                                            <option value="Febrero">Febrero</option>
+                                            <option value="Marzo">Marzo</option>
+                                            <option value="Abril">Abril</option>
+                                            <option value="Mayo">Mayo</option>
+                                            <option value="Junio">Junio</option>
+                                            <option value="Agosto">Agosto</option>
+                                            <option value="Septiembre">Septiembre</option>
+                                            <option value="Octubre">Octubre</option>
+                                            <option value="Noviembre">Noviembre</option>
+                                            <option value="Diciembre">Diciembre</option>
+                                        </select>
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="anio" class="">Año</label>
+                                        <input name="anio" id="anio" placeholder="Año ej. 2020" type="number"
                                                min="1970"
                                                max="2050"
                                                class="form-control">
-                                    </div>
-                                    <div class="position-relative form-group">
+                                    </div><div class="position-relative form-group">
                                         <label for="smgv" class="">Cedula de Determinacion de Cuotas</label>
-                                        <input name="smgv" id="smgv" placeholder="SMGV" type="text" class="form-control">
+                                        <input name="smgv" id="smgv" placeholder="SMGV" type="file" class="form-control">
                                     </div>
                                     <div class="position-relative form-group">
-                                        <label for="uma" class="">U.M.A</label>
-                                        <input name="uma" id="uma" placeholder="UMA"
-                                               type="text" class="form-control">
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <label for="cotizaciones" class="">Cotizaciones</label>
-                                        <input name="cotizaciones" id="cotizaciones" placeholder="Cotizaciones"
-                                               type="text" class="form-control">
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <label for="desde" class="">Fecha Correspondiente</label>
-                                        <input name="desde" id="desde" placeholder="desde"
-                                               type="date" class="form-control">
-                                        <input name="hasta" id="hasta" placeholder="hasta"
-                                               type="date" class="form-control">
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <label for="pdf" class="">PDF</label>
-                                        <input name="pdf" id="pdf" placeholder="PDF"
+                                        <label for="uma" class="">Resumen de Liquidacion</label>
+                                        <input name="liquidacion" id="liquidacion" placeholder="liquidacion"
                                                type="file" class="form-control">
                                     </div>
                                     <div class="position-relative form-group">
-                                        <label for="cliente_id" class="">Relacionado con el Cliente</label>
-                                        <select name="cliente_id" id="cliente_id" class="form-control" >
-                                            <option disabled value="">Seleccione un cliente</option>
-                                            <?php
-                                            while($row = mysqli_fetch_array($res))
-                                            {
-
-                                                ?>
-                                                <option value="<?php print "".$row['id'] .""; ?>"><?php print $row['nombre']; ?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <label for="permiso" class="">Tipo de documento</label>
-                                        <select name="tipo" id="tipo" class="form-control" >
-                                            <option disabled selected>Seleccione un elemento</option>
-                                            <option value="1">EMA</option>
-                                            <option value="2">EVA</option>
-                                        </select>
+                                        <label for="pdf" class="">Pago SUA</label>
+                                        <input name="pagosua" id="pagosua" placeholder="pagosua"
+                                               type="file" class="form-control">
                                     </div>
                                     <button class="mt-1 btn btn-primary" id="botonenviar" type="button">Enviar</button>
                                 </form>
