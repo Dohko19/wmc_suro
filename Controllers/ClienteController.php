@@ -1,14 +1,20 @@
 <?php
 require '../Controllers/Config/db2.php';
-$nss = false;
+require '../Controllers/Config/Carbon/autoload.php';
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+
+date_default_timezone_set('America/Mexico_City');
 if(isset($_POST['cliente']) OR isset($_POST['nss']) OR isset($_POST['marca_id']) OR isset($_POST['sucursal_id']) OR isset($_POST['user_id'])) {
     $cliente = $_POST['cliente'];
     $nss = $_POST['nss'];
     $marca_id = $_POST['marca_id'];
     $sucursal_id = $_POST['sucursal_id'];
     $user_id = $_POST['user_id'];
-
-    $query = "INSERT INTO clientes (nombre, nss, user_id, sucursal_id, marca_id) VALUES ('$cliente', '$nss', '$user_id', '$sucursal_id', '$marca_id')";
+    $created_at = Carbon::now()->format('Y-m-d H:i:s');
+    $mes = date('m');
+    $anio = date('Y');
+    $query = "INSERT INTO clientes (nombre, nss, user_id, sucursal_id, marca_id, created_at) VALUES ('$cliente', '$nss', '$user_id', '$sucursal_id', '$marca_id', '$created_at')";
     if (mysqli_query($conn, $query))
     {
         echo 1;

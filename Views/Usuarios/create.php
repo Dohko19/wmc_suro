@@ -122,7 +122,11 @@
                                         require '../../Controllers/Config/db2.php';
 
                                         $query = 'SELECT id, nombre FROM usuarios';
+                                        $query2 = 'SELECT id, nombre FROM marca';
+                                        $query3 = 'SELECT id, nombre FROM sucursal';
                                         $res = mysqli_query($conn, $query);
+                                        $res2 = mysqli_query($conn, $query2);
+                                        $res3 = mysqli_query($conn, $query3);
                                         ?>
                                         <?php
                                         if(isset($errorCliente)){
@@ -142,14 +146,30 @@
                                                 <label for="marca_id" class="">Marca</label>
                                                 <select name="marca_id" id="marca_id" class="form-control" >
                                                     <option disabled value="1">Seleccione un elemento</option>
-                                                    <option value="2">Marca 1</option>
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($res2))
+                                                    {
+
+                                                        ?>
+                                                        <option value="<?php print "".$row['id'] .""; ?>"><?php print $row['nombre']; ?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="position-relative form-group">
                                                 <label for="sucursal_id" class="">Sucursal</label>
                                                 <select name="sucursal_id" id="sucursal_id" class="form-control" >
                                                     <option disabled value="1">Seleccione un elemento</option>
-                                                    <option value="2">sucursal 1</option>
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($res3))
+                                                    {
+
+                                                        ?>
+                                                        <option value="<?php print "".$row['id'] .""; ?>"><?php print $row['nombre']; ?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="position-relative form-group">

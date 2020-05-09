@@ -68,15 +68,15 @@ date_default_timezone_set('America/Mexico_City');
                         </a>
                     </li>
                     <li class="btn-group nav-item">
-                        <a class="nav-link">
+                        <a onclick="marcasuc()" class="nav-link">
                             <i class="nav-link-icon fa fa-10x fa-user-tie"></i>
                             Marcas/Sucursales
                         </a>
                     </li>
                     <li class="dropdown nav-item">
-                        <a href="javascript:void(0);" class="nav-link">
+                        <a onclick="esep()" href="#ESVPP" class="nav-link">
                             <i class="nav-link-icon fa fa-cog"></i>
-                            Settings
+                            EMA/SUA/EVA/PAGOS PROVISIONALES
                         </a>
                     </li>
                 </ul>
@@ -388,6 +388,34 @@ date_default_timezone_set('America/Mexico_City');
                 jQuery("#loading").html(data);
             }
         });
+    }
+
+    function marcasuc()
+    {
+        jQuery.ajax({
+            url: 'Views/sucmarca/home.php',
+            type: 'POST',
+            beforeSend: function () {
+                jQuery("#loading").html("<br /><br /><i class='icon-spinner icon-spin orange bigger-125'></i>&nbsp;&nbsp;Procesando, Espere por favor...");
+            },
+            success: function (data) {
+                jQuery("#loading").html(data);
+            }
+        })
+    }
+
+    function esep()
+    {
+        jQuery.ajax({
+            url: 'Views/legal/admin/eba.php',
+            type: 'POST',
+            beforeSend: function () {
+                jQuery("#loading").html("<br /><br /><i class='icon-spinner icon-spin orange bigger-125'></i>&nbsp;&nbsp;Procesando, Espere por favor...");
+            },
+            success: function (data) {
+                jQuery("#loading").html(data);
+            }
+        })
     }
 </script>
 
