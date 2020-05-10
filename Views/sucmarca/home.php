@@ -125,7 +125,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <link rel="stylesheet" href="/assets/css/toastr.min.css">
     <script src="/assets/scripts/jquery-3.5.0.js"></script>
     <script type="text/javascript" src="/assets/scripts/main.js"></script>
@@ -148,8 +147,7 @@
 
         $(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
             $("#marcabutton").click( function() {   // Con esto establecemos la acción por defecto de nuestro botón de enviar.
-                var datos = $("#marcadata").serializeArray();
-                var imagen = new formData($("#marcadata")[0]);
+                var datos = $("#marcadata").serialize();
                 if(validarMarca()){                               // Primero validará el formulario.
                     $.post("/Controllers/MarcaController.php", datos, function(res){
                         if(res == 1){
