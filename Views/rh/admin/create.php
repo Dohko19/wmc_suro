@@ -338,12 +338,9 @@ $res = mysqli_query($conn, $query);
                     contentType: false,
                     processData: false
                 })
-                    .done(function (echo) {
-                        if (echo === 1)
-                        {
-                            console.log("ps ya");
-                        }
-                        console.log("Subido cñ");
+                    .done(function () {
+                        toastr.info('Expediente dado de alta correctamente', {timeOut: 3000, progressBar: true});
+                        $('#expelectronico').trigger("reset");
                     })
                     .fail(function () {
                         console.log("ERROR");

@@ -98,7 +98,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-card mb-3 card">
-                            <div class="card-body"><h5 class="card-title">Clientes <a onclick="clienteAlta()" href="#clientesAlta" class="btn btn-info float-right">Dar de alta Cliente</a onclick="clienteAlta()"></h5>
+                            <div class="card-body"><h5 class="card-title">Clientes></h5>
                                 <div class="position-relative form-group">
                                     <div>
                                         <div id="listarClientes"></div>

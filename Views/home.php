@@ -128,9 +128,7 @@ date_default_timezone_set('America/Mexico_City');
         <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
             <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
         </button>
-
     </div>
-
     <div class="app-main">
         <div class="app-sidebar sidebar-shadow">
             <div class="app-header__logo">
@@ -165,7 +163,7 @@ date_default_timezone_set('America/Mexico_City');
             </div>
                 <div class="scrollbar-sidebar">
                 <div class="app-sidebar__inner">
-                    <ul class="vertical-nav-menu">
+                    <ul id="menu" class="vertical-nav-menu">
                         <li class="app-sidebar__heading">Dashboard</li>
                         <li>
                             <a href="/" class="mm-active">
@@ -234,7 +232,7 @@ date_default_timezone_set('America/Mexico_City');
                                 </li>
                             </ul>
                         </li>
-
+                    </ul>
                 </div>
             </div>
         </div>
@@ -431,7 +429,19 @@ date_default_timezone_set('America/Mexico_City');
         })
     }
 </script>
-
+<script type="text/javascript">
+    document.onreadystatechange = function(){
+        var selected_parent;
+        if(document.readyState === 'interactive'){
+            selected_parent = $('#menu').children().find('a').filter('.mm-active').parent('li').index();
+            jQuery.data( document.body, "selected_parent", selected_parent);
+        }
+        if(document.readyState === 'complete'){
+            var selected_parent = jQuery.data( document.body, "selected_parent" );
+            $('#menu').children('li:eq('+selected_parent+')').children('a').addClass('mm-active');
+        }
+    }
+</script>
 
 </html>
 
