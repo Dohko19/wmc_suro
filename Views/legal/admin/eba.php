@@ -311,11 +311,6 @@ $res = mysqli_query($conn, $query);
                 $("#mes").focus();
                 return false;
             }
-            // if($("#anio").val() == ""){
-            //     toastr.error('El campo año no puede estar vacío.', {timeOut: 5000, progressBar: true});
-            //     $("#anio").focus();
-            //     return false;
-            // }
             if($("#cdc").val() == ""){
                 toastr.error('El campo Cedula determinacion de cuotas no puede estar vacío.', {timeOut: 5000, progressBar: true});
                 $("#cdc").focus();
@@ -336,11 +331,22 @@ $res = mysqli_query($conn, $query);
 
         $(document).ready( function() {
             $("#suabutton").click( function() {
-                if(validarSUA()){    
+                if(validarSUA()){
+                    var formData = new FormData();
+                    formData.append('cdc',$('#cdc').prop('files')[0]);
+                    formData.append('liquidacion',$('#liquidacion').prop('files')[1]);
+                    formData.append('pagosua',$('#pagosua').prop('files')[0]);
+                    formData.append('periodo',$('#periodo'));
+                    alert(formData);
                 $.ajax({
                     url: "Controllers/SUAController.php",
                     method: 'post',
-                    data: $("#suadata").serialize()
+                    // data: $("#suadata").serialize(),
+                    data: formData,
+                    processData: false,
+                    headers: {
+                        contentType: 'multipart/form-data'
+                    }
                 })
                 .done(function(res){
                     if(res == 1){
@@ -349,7 +355,7 @@ $res = mysqli_query($conn, $query);
                     }
                     else 
                     {
-                        toastr.error('Error al registrar.', {timeOut: 5000, progressBar: true});
+                        toastr.error('Error al registrar error:1.', {timeOut: 5000, progressBar: true});
                     }
                 });
                 }

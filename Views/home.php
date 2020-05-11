@@ -53,13 +53,6 @@ date_default_timezone_set('America/Mexico_City');
                 </span>
         </div>    <div class="app-header__content">
             <div class="app-header-left">
-                <div class="search-wrapper">
-                    <div class="input-holder">
-                        <input type="text" class="search-input" placeholder="Type to search">
-                        <button class="search-icon"><span></span></button>
-                    </div>
-                    <button class="close"></button>
-                </div>
                 <ul class="header-menu nav">
                     <li class="nav-item">
                         <a onclick="users()" class="nav-link">
@@ -77,6 +70,12 @@ date_default_timezone_set('America/Mexico_City');
                         <a onclick="esep()" href="#ESVPP" class="nav-link">
                             <i class="nav-link-icon fa fa-cog"></i>
                             EMA/SUA/EVA/PAGOS PROVISIONALES
+                        </a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a onclick="recursosHumanos()" href="#ESVPP" class="nav-link">
+                            <i class="nav-link-icon fa fa-cog"></i>
+                            Recursos Humanos
                         </a>
                     </li>
                 </ul>
@@ -408,6 +407,20 @@ date_default_timezone_set('America/Mexico_City');
     {
         jQuery.ajax({
             url: 'Views/legal/admin/eba.php',
+            type: 'POST',
+            beforeSend: function () {
+                jQuery("#loading").html("<br /><br /><i class='icon-spinner icon-spin orange bigger-125'></i>&nbsp;&nbsp;Procesando, Espere por favor...");
+            },
+            success: function (data) {
+                jQuery("#loading").html(data);
+            }
+        })
+    }
+
+    function recursosHumanos()
+    {
+        jQuery.ajax({
+            url: 'Views/rh/admin/create.php',
             type: 'POST',
             beforeSend: function () {
                 jQuery("#loading").html("<br /><br /><i class='icon-spinner icon-spin orange bigger-125'></i>&nbsp;&nbsp;Procesando, Espere por favor...");

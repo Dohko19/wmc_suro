@@ -11,6 +11,36 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Volcando estructura de base de datos para wmc_suro
+CREATE DATABASE IF NOT EXISTS `wmc_suro` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `wmc_suro`;
+
+-- Volcando estructura para tabla wmc_suro.archive
+CREATE TABLE IF NOT EXISTS `archive` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pdf` varchar(255) DEFAULT NULL,
+  `foto` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla wmc_suro.archive: ~10 rows (aproximadamente)
+/*!40000 ALTER TABLE `archive` DISABLE KEYS */;
+REPLACE INTO `archive` (`id`, `pdf`, `foto`) VALUES
+	(1, 'gr1.pdf', NULL),
+	(2, 'gr1.pdf', NULL),
+	(3, './expedienteRH/.gr1.pdf', NULL),
+	(4, './expedienteRH/gr1.pdf', NULL),
+	(5, 'gr1.pdf', NULL),
+	(6, 'expediente.pdf', NULL),
+	(7, 'expediente.pdf', NULL),
+	(8, 'expediente.pdf', NULL),
+	(9, 'expediente.pdf', NULL),
+	(10, 'expediente.pdf', NULL),
+	(11, 'expediente.pdf', 'logo.jpeg'),
+	(12, 'expediente.pdf', 'logo.jpeg');
+/*!40000 ALTER TABLE `archive` ENABLE KEYS */;
+
 -- Volcando estructura para tabla wmc_suro.clientes
 CREATE TABLE IF NOT EXISTS `clientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -29,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 COMMENT='Clientes tabla no puedes acceder al wmc, solo mostraran sus datos de quien sea :V';
 
--- Volcando datos para la tabla wmc_suro.clientes: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla wmc_suro.clientes: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
 REPLACE INTO `clientes` (`id`, `nombre`, `nss`, `user_id`, `sucursal_id`, `marca_id`, `created_at`) VALUES
 	(1, 'Prueba', '74238910252', 1, 1, 1, NULL),
@@ -71,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `marca` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Tabla de marcas listado de marcas para clientes y o usuarios';
 
--- Volcando datos para la tabla wmc_suro.marca: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla wmc_suro.marca: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
 REPLACE INTO `marca` (`id`, `nombre`, `imagen`, `descripcion`, `created_at`, `mes`, `anio`) VALUES
 	(1, 'Marca', 'nada.jph', 'test de marca', '2020-05-08 11:06:09', '', ''),
@@ -89,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `sucursal` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='sucursalesss';
 
--- Volcando datos para la tabla wmc_suro.sucursal: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla wmc_suro.sucursal: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `sucursal` DISABLE KEYS */;
 REPLACE INTO `sucursal` (`id`, `nombre`, `imagen`, `created_at`, `anio`, `mes`) VALUES
 	(1, 'Suc 1', 'algo.png', '2020-05-08 11:27:12', '9', '9'),
@@ -110,13 +140,14 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `permisos` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla wmc_suro.usuarios: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 REPLACE INTO `usuarios` (`id`, `nombre`, `username`, `password`, `avatar`, `permisos`, `created_at`) VALUES
 	(1, 'Daniel', 'daniel.trejo', '2564f7b12d9d0583981820debea54242', NULL, 1, NULL),
-	(7, 'asasd', 'asdads', 'a8f5f167f44f4964e6c998dee827110c', NULL, 1, NULL);
+	(7, 'asasd', 'asdads', 'a8f5f167f44f4964e6c998dee827110c', NULL, 1, NULL),
+	(13, '', '', 'd41d8cd98f00b204e9800998ecf8427e', NULL, 1, NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
