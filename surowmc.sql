@@ -16,31 +16,6 @@
 CREATE DATABASE IF NOT EXISTS `wmc_suro` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `wmc_suro`;
 
--- Volcando estructura para tabla wmc_suro.archive
-CREATE TABLE IF NOT EXISTS `archive` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pdf` varchar(255) DEFAULT NULL,
-  `foto` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
-
--- Volcando datos para la tabla wmc_suro.archive: ~10 rows (aproximadamente)
-/*!40000 ALTER TABLE `archive` DISABLE KEYS */;
-REPLACE INTO `archive` (`id`, `pdf`, `foto`) VALUES
-	(1, 'gr1.pdf', NULL),
-	(2, 'gr1.pdf', NULL),
-	(3, './expedienteRH/.gr1.pdf', NULL),
-	(4, './expedienteRH/gr1.pdf', NULL),
-	(5, 'gr1.pdf', NULL),
-	(6, 'expediente.pdf', NULL),
-	(7, 'expediente.pdf', NULL),
-	(8, 'expediente.pdf', NULL),
-	(9, 'expediente.pdf', NULL),
-	(10, 'expediente.pdf', NULL),
-	(11, 'expediente.pdf', 'logo.jpeg'),
-	(12, 'expediente.pdf', 'logo.jpeg');
-/*!40000 ALTER TABLE `archive` ENABLE KEYS */;
-
 -- Volcando estructura para tabla wmc_suro.clientes
 CREATE TABLE IF NOT EXISTS `clientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -88,6 +63,30 @@ CREATE TABLE IF NOT EXISTS `emaeva` (
 -- Volcando datos para la tabla wmc_suro.emaeva: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `emaeva` DISABLE KEYS */;
 /*!40000 ALTER TABLE `emaeva` ENABLE KEYS */;
+
+-- Volcando estructura para tabla wmc_suro.expediente_electronico
+CREATE TABLE IF NOT EXISTS `expediente_electronico` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `ap_paterno` varchar(50) DEFAULT NULL,
+  `ap_materno` varchar(50) DEFAULT NULL,
+  `centro` varchar(50) DEFAULT NULL,
+  `nss` varchar(50) DEFAULT NULL,
+  `calle` varchar(50) DEFAULT NULL,
+  `numinterior` int(11) DEFAULT NULL,
+  `numero` int(11) DEFAULT NULL,
+  `colonia` varchar(100) DEFAULT NULL,
+  `delmun` varchar(100) DEFAULT NULL,
+  `cp` int(11) DEFAULT NULL,
+  `ciudad` varchar(50) DEFAULT NULL,
+  `expediente` varchar(100) DEFAULT NULL,
+  `foto` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla wmc_suro.expediente_electronico: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `expediente_electronico` DISABLE KEYS */;
+/*!40000 ALTER TABLE `expediente_electronico` ENABLE KEYS */;
 
 -- Volcando estructura para tabla wmc_suro.marca
 CREATE TABLE IF NOT EXISTS `marca` (
@@ -142,12 +141,11 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla wmc_suro.usuarios: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla wmc_suro.usuarios: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 REPLACE INTO `usuarios` (`id`, `nombre`, `username`, `password`, `avatar`, `permisos`, `created_at`) VALUES
 	(1, 'Daniel', 'daniel.trejo', '2564f7b12d9d0583981820debea54242', NULL, 1, NULL),
-	(7, 'asasd', 'asdads', 'a8f5f167f44f4964e6c998dee827110c', NULL, 1, NULL),
-	(13, '', '', 'd41d8cd98f00b204e9800998ecf8427e', NULL, 1, NULL);
+	(7, 'asasd', 'asdads', 'a8f5f167f44f4964e6c998dee827110c', NULL, 1, NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
