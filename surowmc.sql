@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         localhost
--- Versión del servidor:         5.7.24 - MySQL Community Server (GPL)
--- SO del servidor:              Win64
--- HeidiSQL Versión:             10.2.0.5599
+-- Server version:               5.7.24 - MySQL Community Server (GPL)
+-- Server OS:                    Win64
+-- HeidiSQL Version:             10.3.0.5771
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -12,11 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Volcando estructura de base de datos para wmc_suro
+-- Dumping database structure for wmc_suro
 CREATE DATABASE IF NOT EXISTS `wmc_suro` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `wmc_suro`;
 
--- Volcando estructura para tabla wmc_suro.clientes
+-- Dumping structure for table wmc_suro.clientes
 CREATE TABLE IF NOT EXISTS `clientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
@@ -34,15 +34,15 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 COMMENT='Clientes tabla no puedes acceder al wmc, solo mostraran sus datos de quien sea :V';
 
--- Volcando datos para la tabla wmc_suro.clientes: ~2 rows (aproximadamente)
+-- Dumping data for table wmc_suro.clientes: ~3 rows (approximately)
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-REPLACE INTO `clientes` (`id`, `nombre`, `nss`, `user_id`, `sucursal_id`, `marca_id`, `created_at`) VALUES
+INSERT INTO `clientes` (`id`, `nombre`, `nss`, `user_id`, `sucursal_id`, `marca_id`, `created_at`) VALUES
 	(1, 'Prueba', '74238910252', 1, 1, 1, NULL),
 	(17, 'cdf', 'sd', 1, 1, 1, '2020-05-08 11:06:40'),
 	(18, 'ajkdsjakjs', '3456789', 1, 1, 1, '2020-05-08 12:06:06');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
--- Volcando estructura para tabla wmc_suro.emaeva
+-- Dumping structure for table wmc_suro.emaeva
 CREATE TABLE IF NOT EXISTS `emaeva` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mes` varchar(50) NOT NULL DEFAULT '0',
@@ -60,11 +60,11 @@ CREATE TABLE IF NOT EXISTS `emaeva` (
   CONSTRAINT `FK_emaeva_clientes` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='EVA y EMA reportes';
 
--- Volcando datos para la tabla wmc_suro.emaeva: ~0 rows (aproximadamente)
+-- Dumping data for table wmc_suro.emaeva: ~0 rows (approximately)
 /*!40000 ALTER TABLE `emaeva` DISABLE KEYS */;
 /*!40000 ALTER TABLE `emaeva` ENABLE KEYS */;
 
--- Volcando estructura para tabla wmc_suro.expediente_electronico
+-- Dumping structure for table wmc_suro.expediente_electronico
 CREATE TABLE IF NOT EXISTS `expediente_electronico` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
@@ -81,14 +81,18 @@ CREATE TABLE IF NOT EXISTS `expediente_electronico` (
   `ciudad` varchar(50) DEFAULT NULL,
   `expediente` varchar(100) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla wmc_suro.expediente_electronico: ~0 rows (aproximadamente)
+-- Dumping data for table wmc_suro.expediente_electronico: ~1 rows (approximately)
 /*!40000 ALTER TABLE `expediente_electronico` DISABLE KEYS */;
+INSERT INTO `expediente_electronico` (`id`, `nombre`, `ap_paterno`, `ap_materno`, `centro`, `nss`, `calle`, `numinterior`, `numero`, `colonia`, `delmun`, `cp`, `ciudad`, `expediente`, `foto`, `created_at`) VALUES
+	(2, 'Daniel Arturo', 'Trejo', 'Rojas', 'CENTRO', '65565613216546', 'CALLE', 345, 345, 'ASNOISND', 'JFSLKJFL:SKDJLKSDJFOW(IEJOL:::::LSKDJFLKS:DJFLK', 15530, 'asdasd', 'CURP_TERD930925HDFRJN08.pdf', 'fondo.jpg', '2020-05-12 11:19:30'),
+	(3, 'Daniel Arturo', 'Trejo', 'Rojas', 'CENTRO', '65565613216546', 'CALLE', 1223, 123321, 'ASNOISND', 'JFSLKJFL:SKDJLKSDJFOW(IEJOL:::::LSKDJFLKS:DJFLK', 15530, 'Mexico', 'Acta_de_Nacimiento_GODK971021MDFNRR03.pdf', 'diagrama-base-de-datos.png', '2020-05-12 16:57:13');
 /*!40000 ALTER TABLE `expediente_electronico` ENABLE KEYS */;
 
--- Volcando estructura para tabla wmc_suro.marca
+-- Dumping structure for table wmc_suro.marca
 CREATE TABLE IF NOT EXISTS `marca` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
@@ -98,16 +102,53 @@ CREATE TABLE IF NOT EXISTS `marca` (
   `mes` varchar(50) DEFAULT NULL,
   `anio` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Tabla de marcas listado de marcas para clientes y o usuarios';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='Tabla de marcas listado de marcas para clientes y o usuarios';
 
--- Volcando datos para la tabla wmc_suro.marca: ~0 rows (aproximadamente)
+-- Dumping data for table wmc_suro.marca: ~3 rows (approximately)
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
-REPLACE INTO `marca` (`id`, `nombre`, `imagen`, `descripcion`, `created_at`, `mes`, `anio`) VALUES
+INSERT INTO `marca` (`id`, `nombre`, `imagen`, `descripcion`, `created_at`, `mes`, `anio`) VALUES
 	(1, 'Marca', 'nada.jph', 'test de marca', '2020-05-08 11:06:09', '', ''),
-	(2, 'adsasd', NULL, 'asdasd', '2020-05-08 14:04:16', '5', '5');
+	(2, 'adsasd', NULL, 'asdasd', '2020-05-08 14:04:16', '5', '5'),
+	(3, 'test2', NULL, 'testtsss', '2020-05-09 22:17:34', '5', '2020');
 /*!40000 ALTER TABLE `marca` ENABLE KEYS */;
 
--- Volcando estructura para tabla wmc_suro.sucursal
+-- Dumping structure for table wmc_suro.pagos_provisionales
+CREATE TABLE IF NOT EXISTS `pagos_provisionales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `periodo` int(11) DEFAULT NULL,
+  `anio` int(11) DEFAULT NULL,
+  `pago_provisional` varchar(255) DEFAULT NULL,
+  `cumplimiento_oficial` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table wmc_suro.pagos_provisionales: ~0 rows (approximately)
+/*!40000 ALTER TABLE `pagos_provisionales` DISABLE KEYS */;
+INSERT INTO `pagos_provisionales` (`id`, `periodo`, `anio`, `pago_provisional`, `cumplimiento_oficial`, `created_at`) VALUES
+	(1, 6, 1975, 'CFDIPDF.pdf', 'CV Suro 2020 Escuelas 2.pdf', '2020-05-12 17:58:59');
+/*!40000 ALTER TABLE `pagos_provisionales` ENABLE KEYS */;
+
+-- Dumping structure for table wmc_suro.sua
+CREATE TABLE IF NOT EXISTS `sua` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nomes` int(11) DEFAULT NULL,
+  `mes` varchar(50) DEFAULT NULL,
+  `anio` int(11) DEFAULT NULL,
+  `ced_det_cuota` varchar(255) DEFAULT NULL,
+  `resumen_liquidacion` varchar(255) DEFAULT NULL,
+  `pago_sua` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='SUA TABLE';
+
+-- Dumping data for table wmc_suro.sua: ~0 rows (approximately)
+/*!40000 ALTER TABLE `sua` DISABLE KEYS */;
+INSERT INTO `sua` (`id`, `nomes`, `mes`, `anio`, `ced_det_cuota`, `resumen_liquidacion`, `pago_sua`, `created_at`) VALUES
+	(1, 2, 'Enero', 1970, 'CV Suro 2020 Escuelas 2.pdf', 'Acta_de_Nacimiento_GODK971021MDFNRR03.pdf', 'tarjetaNSS05139314321.pdf', '2020-05-12 19:04:29');
+/*!40000 ALTER TABLE `sua` ENABLE KEYS */;
+
+-- Dumping structure for table wmc_suro.sucursal
 CREATE TABLE IF NOT EXISTS `sucursal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL DEFAULT '0',
@@ -118,9 +159,9 @@ CREATE TABLE IF NOT EXISTS `sucursal` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='sucursalesss';
 
--- Volcando datos para la tabla wmc_suro.sucursal: ~5 rows (aproximadamente)
+-- Dumping data for table wmc_suro.sucursal: ~6 rows (approximately)
 /*!40000 ALTER TABLE `sucursal` DISABLE KEYS */;
-REPLACE INTO `sucursal` (`id`, `nombre`, `imagen`, `created_at`, `anio`, `mes`) VALUES
+INSERT INTO `sucursal` (`id`, `nombre`, `imagen`, `created_at`, `anio`, `mes`) VALUES
 	(1, 'Suc 1', 'algo.png', '2020-05-08 11:27:12', '9', '9'),
 	(2, 'asdsad', '0', '2020-05-08 15:35:03', '2020', '5'),
 	(3, 'asdsad', '0', '2020-05-08 15:35:18', '2020', '5'),
@@ -129,23 +170,23 @@ REPLACE INTO `sucursal` (`id`, `nombre`, `imagen`, `created_at`, `anio`, `mes`) 
 	(6, 'asdasd', '0', '2020-05-08 16:25:34', '2020', '5');
 /*!40000 ALTER TABLE `sucursal` ENABLE KEYS */;
 
--- Volcando estructura para tabla wmc_suro.usuarios
+-- Dumping structure for table wmc_suro.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
   `avatar` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `permisos` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
+  `created_at` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla wmc_suro.usuarios: ~1 rows (aproximadamente)
+-- Dumping data for table wmc_suro.usuarios: ~2 rows (approximately)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-REPLACE INTO `usuarios` (`id`, `nombre`, `username`, `password`, `avatar`, `permisos`, `created_at`) VALUES
-	(1, 'Daniel', 'daniel.trejo', '2564f7b12d9d0583981820debea54242', NULL, 1, NULL),
-	(7, 'asasd', 'asdads', 'a8f5f167f44f4964e6c998dee827110c', NULL, 1, NULL);
+INSERT INTO `usuarios` (`id`, `username`, `nombre`, `avatar`, `password`, `permisos`, `created_at`) VALUES
+	(1, 'daniel.trejo', 'Daniel', NULL, '4297f44b13955235245b2497399d7a93', 1, NULL),
+	(7, 'asdads', 'asasd', NULL, 'a8f5f167f44f4964e6c998dee827110c', 1, NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

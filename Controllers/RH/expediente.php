@@ -1,5 +1,9 @@
 <?php
 require '../Config/db2.php';
+require '../Config/Carbon/autoload.php';
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+
 $path = './expedienteRH/';
 $pathFoto = './expedienteRH/fotos/';
 
@@ -17,6 +21,7 @@ $cp = $_POST['cprh'];
 $ciudad = $_POST['ciudadrh'];
 $expediente = $_FILES['expdienterh'];
 $foto = $_FILES['fotorh'];
+$created_at = Carbon::now()->format('Y-m-d H:i:s');
 
 if ((isset($expediente)) AND ($expediente !=''))
 {
@@ -42,7 +47,8 @@ if ((isset($expediente)) AND ($expediente !=''))
         {
             if ($foto !='')
             {
-                $query = "INSERT INTO archive (pdf, foto) VALUES ('$filename', '$fotoName')";
+                $query = "INSERT INTO expediente_electronico (nombre, ap_paterno, ap_materno, centro, nss, calle, numinterior, numero, colonia, delmun, cp, ciudad, expediente, foto, created_at)
+                            VALUES ('$nombre', '$apellidoPaterno', '$apellidoMaterno', '$centro', '$nss', '$calle', '$numerointerior', '$numero', '$colonia', '$delmun', '$cp', '$ciudad','$filename', '$fotoName', '$created_at')";
                 if (mysqli_query($conn,$query))
                 {
                     echo 1;
@@ -50,12 +56,13 @@ if ((isset($expediente)) AND ($expediente !=''))
                 }
                 else
                 {
-                    echo mysqli_error($conn);
+                    return mysqli_error($conn);
                 }
             }
             else
             {
-                $query = "INSERT INTO archive (pdf) VALUES ('$filename')";
+                $query = "INSERT INTO expediente_electronico (nombre, ap_paterno, ap_materno, centro, nss, calle, numinterior, numero, colonia, delmun, cp, ciudad, expediente, created_at)
+                            VALUES ('$nombre', '$apellidoPaterno', '$apellidoMaterno', '$centro', '$nss', '$calle', '$numerointerior', '$numero', '$colonia', '$delmun', '$cp', '$ciudad','$filename', '$created_at')";
                 if (mysqli_query($conn,$query))
                 {
                     echo 1;

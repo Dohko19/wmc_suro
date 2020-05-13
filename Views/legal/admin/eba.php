@@ -122,7 +122,7 @@ $res = mysqli_query($conn, $query);
             <div class="row">
                 <div class="col-md-12">
                     <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Dar de Alta SUA</h5>
+                        <div class="card-body"><h5 class="card-title">Recibos de Nomina</h5>
                             <div>
                                 <form id="suadata" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="position-relative form-group">
@@ -184,49 +184,49 @@ $res = mysqli_query($conn, $query);
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main-card mb-3 card">
-                            <div class="card-body"><h5 class="card-title">Pagos Provisionales</h5>
+                            <div class="card-body"><h5 class="card-title">NOM-035</h5>
                                 <div class="position-relative form-group">
                                     <div>
                                     <form id="ppdata" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                    <div class="position-relative form-group">
-                                        <label for="periodo" class="">Periodo</label>
-                                        <input name="period" id="period" placeholder="Numero de Mes" type="number"
-                                               min="1"
-                                               max="12"
-                                               class="form-control">
-                                        <br>
-                                        Mes:
-                                        <select class="form-control" name="mesp" id="mesp">
-                                            <option value="Enero">Enero</option>
-                                            <option value="Febrero">Febrero</option>
-                                            <option value="Marzo">Marzo</option>
-                                            <option value="Abril">Abril</option>
-                                            <option value="Mayo">Mayo</option>
-                                            <option value="Junio">Junio</option>
-                                            <option value="Agosto">Agosto</option>
-                                            <option value="Septiembre">Septiembre</option>
-                                            <option value="Octubre">Octubre</option>
-                                            <option value="Noviembre">Noviembre</option>
-                                            <option value="Diciembre">Diciembre</option>
-                                        </select>
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <label for="aniop" class="">Año</label>
-                                        <input name="aniop" id="anio" placeholder="Año ej. 2020" type="number"
-                                               min="1970"
-                                               max="2050"
-                                               class="form-control">
-                                    </div><div class="position-relative form-group">
-                                        <label for="ppi" class="">Pago Provisional de Impuestos</label>
-                                        <input name="ppi" id="ppi" type="file" class="form-control">
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <label for="oco" class="">Opinion de Cumplimiento Oficial</label>
-                                        <input name="oco" id="oco"
-                                               type="file" class="form-control">
-                                    </div>
-                                    <button class="mt-1 btn btn-primary" id="ppbutton" type="button">Enviar</button>
-                                </form>
+                                        <div class="position-relative form-group">
+                                            <label for="periodo" class="">Periodo</label>
+                                            <input name="period" id="period" placeholder="Numero de Mes" type="number"
+                                                   min="1"
+                                                   max="12"
+                                                   class="form-control">
+                                            <br>
+                                            Mes:
+                                            <select class="form-control" name="mesp" id="mesp">
+                                                <option value="Enero">Enero</option>
+                                                <option value="Febrero">Febrero</option>
+                                                <option value="Marzo">Marzo</option>
+                                                <option value="Abril">Abril</option>
+                                                <option value="Mayo">Mayo</option>
+                                                <option value="Junio">Junio</option>
+                                                <option value="Agosto">Agosto</option>
+                                                <option value="Septiembre">Septiembre</option>
+                                                <option value="Octubre">Octubre</option>
+                                                <option value="Noviembre">Noviembre</option>
+                                                <option value="Diciembre">Diciembre</option>
+                                            </select>
+                                        </div>
+                                        <div class="position-relative form-group">
+                                            <label for="aniop" class="">Año</label>
+                                            <input name="aniop" id="anio" placeholder="Año ej. 2020" type="number"
+                                                   min="1970"
+                                                   max="2050"
+                                                   class="form-control">
+                                        </div><div class="position-relative form-group">
+                                            <label for="ppi" class="">Pago Provisional de Impuestos</label>
+                                            <input name="ppi" id="ppi" type="file" class="form-control">
+                                        </div>
+                                        <div class="position-relative form-group">
+                                            <label for="oco" class="">Opinion de Cumplimiento Oficial</label>
+                                            <input name="oco" id="oco"
+                                                   type="file" class="form-control">
+                                        </div>
+                                        <button class="mt-1 btn btn-primary" id="ppbutton" type="button">Enviar</button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -353,7 +353,7 @@ $res = mysqli_query($conn, $query);
                         toastr.success('El Cliente se dio de alta correctamente.', {timeOut: 5000, progressBar: true});
                         $('#evaemadata').trigger("reset");
                     }
-                    else 
+                    else
                     {
                         toastr.error('Error al registrar error:1.', {timeOut: 5000, progressBar: true});
                     }
@@ -362,62 +362,6 @@ $res = mysqli_query($conn, $query);
                 else
                 {
                     toastr.error('Error al registrar.', {timeOut: 5000, progressBar: true});
-                }
-            });
-        });
-    </script>
-     <script>
-        function validarppdata(){
-            if($("#period").val() == ""){
-                toastr.error('El campo Periodo no pede estar vacio', {timeOut: 5000, progressBar: true});
-                $("#period").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
-                return false;
-            }
-            if($("#mesp").val() == ""){
-                toastr.error('El campo mes no puede estar vacío.', {timeOut: 5000, progressBar: true});
-                $("#mesp").focus();
-                return false;
-            }
-            if($("#aniop").val() == ""){
-                toastr.error('El campo año no puede estar vacío.', {timeOut: 5000, progressBar: true});
-                $("#aniop").focus();
-                return false;
-            }
-            if($("#ppi").val() == ""){
-                toastr.error('El campo Pago Provisional de Impuestos no puede estar vacío.', {timeOut: 5000, progressBar: true});
-                $("#ppi").focus();
-                return false;
-            }
-            if($("#oco").val() == ""){
-                toastr.error('El campo Cumplimiento fiscal no puede estar vacío.', {timeOut: 5000, progressBar: true});
-                $("#oco").focus();
-                return false;
-            }
-            return true;
-        }
-
-        $(document).ready( function() {
-            $("#ppbutton").click( function() {
-                if(validarppdata()){    
-                $.ajax({
-                    url: "Controllers/EvaEmaController.php",
-                    data: $("#ppdata").serialize(),
-                    contentType: 'multipart/form-data'
-                })
-                .done(function(res){
-                    if(res == 1){
-                        toastr.success('Realizado.', {timeOut: 5000, progressBar: true});
-                        $('#evaemadata').trigger("reset");
-                    }
-                    else 
-                    {
-                        toastr.error('Error al registrar Pago Provisional.', {timeOut: 5000, progressBar: true});
-                    }
-                });
-                }
-                else
-                {
-                    toastr.error('Error al registrar..', {timeOut: 5000, progressBar: true});
                 }
             });
         });
