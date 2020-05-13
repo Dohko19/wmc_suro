@@ -27,12 +27,12 @@ require '../../../Controllers/Config/db2.php';
         </li>
         <li class="nav-item">
             <a role="tab" class="nav-link" id="tab-1" data-toggle="tab" href="#tab-content-1">
-                <span id="boton-usuarios" >SUA</span>
+                <span id="boton-usuarios" >Recibos de Nomina</span>
             </a>
         </li>
         <li class="nav-item">
             <a role="tab" class="nav-link" id="tab-2" data-toggle="tab" href="#tab-content-2">
-                <span id="boton-clientes">Pagos Provisionales</span>
+                <span id="boton-clientes">NOM-035</span>
             </a>
         </li>
     </ul>
@@ -144,21 +144,59 @@ require '../../../Controllers/Config/db2.php';
             <div class="row">
                 <div class="col-md-12">
                     <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Dar de Alta SUA</h5>
-                            <div>
-                                <form id="suadata" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="card-body"><h5 class="card-title">Recibos de Nomina</h5>
+                            <div id="">
+                                <form  id="rnomina" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="position-relative form-group">
-                                        <label for="periodo" class="">Periodo</label>
-                                        <br>
-                                        Numero de Mes:
-                                        <input name="nomes" id="nomes" placeholder="Numero de Mes" type="number"
-                                               min="1"
-                                               max="12"
-                                               value="2"
+                                        <label for="nssrn" class="">NSS</label>
+                                        <input name="nssrn" id="nssrn" placeholder="Numero de Seguro Social" type="text"
                                                class="form-control">
-                                        <br>
-                                        Mes:
-                                        <select class="form-control" name="mes" id="mes">
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="nombrern" class="">Nombre Completo</label>
+                                        <input name="nombrern" id="nombrern" placeholder="Nombre Completo" type="text" class="form-control">
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="centrorn" class="">Centro</label><br>
+                                        <input name="centrorn" id="centrorn" placeholder="Centro"
+                                               type="text" class="form-control">
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="tiendarn" class="">Tienda</label>
+                                        <input name="tiendarn" id="tiendarn" placeholder="Tienda"
+                                               type="text" class="form-control">
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="reciboNomina" class="">Recibo de Nomina</label>
+                                        <input name="reciborn" id="fotorh"
+                                               type="file"
+                                               accept="application/pdf"
+                                               class="form-control"
+                                               required>
+                                    </div>
+                                    <button class="mt-1 btn btn-primary" type="submit">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane tabs-animation fade" id="tab-content-2" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body"><h5 class="card-title">NOMBRE-35</h5>
+                            <div id="">
+                                <form  id="nom35" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="position-relative form-group">
+                                        <label for="centrorn" class="">Centro</label>
+                                        <input name="centrornn" id="centrornn" placeholder="Centro" type="text"
+                                               class="form-control">
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="mesrn" class="">MES</label>
+                                        <select class="form-control" name="mesrn" id="mesrn">
                                             <option value="Enero">Enero</option>
                                             <option value="Febrero">Febrero</option>
                                             <option value="Marzo">Marzo</option>
@@ -173,74 +211,31 @@ require '../../../Controllers/Config/db2.php';
                                         </select>
                                     </div>
                                     <div class="position-relative form-group">
-                                        <label for="anio" class="">Año</label>
-                                        <input name="anio" id="anio" placeholder="Año ej. 2020" type="number"
-                                               min="1970"
-                                               max="2050"
-                                               value="1970"
-                                               class="form-control">
-                                    </div><div class="position-relative form-group">
-                                        <label for="cdc" class="">Cedula de Determinacion de Cuotas</label>
-                                        <input name="cdc"
-                                               id="cdc"
-                                               placeholder="Cedula de Determinacion de Cuotas"
-                                               accept="application/pdf"
+                                        <label for="aniorn" class="">AÑO</label><br>
+                                        <input name="aniorn" id="aniorn" placeholder="Año"
+                                               type="number" class="form-control"
+                                                min="1950"
+                                               max="2050">
+
+                                    </div>
+                                    <div class="position-relative form-group">
+                                        <label for="gr1rn" class="">Recibo de Nomina</label>
+                                        <input name="gr1rn" id="gr1rn"
                                                type="file"
-                                               class="form-control">
+                                               accept="application/pdf"
+                                               class="form-control"
+                                               required>
                                     </div>
                                     <div class="position-relative form-group">
-                                        <label for="liquidacion" class="">Resumen de Liquidacion</label>
-                                        <input name="liquidacion" id="liquidacion" placeholder="liquidacion"
-                                               type="file" accept="application/pdf" class="form-control">
-                                    </div>
-                                    <div class="position-relative form-group">
-                                        <label for="pagosua" class="">Pago SUA</label>
-                                        <input name="pagosua" id="pagosua" placeholder="pagosua"
-                                               type="file" accept="application/pdf" class="form-control">
+                                        <label for="gr3rn" class="">Recibo de Nomina</label>
+                                        <input name="gr3rn" id="gr3rn"
+                                               type="file"
+                                               accept="application/pdf"
+                                               class="form-control"
+                                               required>
                                     </div>
                                     <button class="mt-1 btn btn-primary" type="submit">Enviar</button>
                                 </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane tabs-animation fade" id="tab-content-2" role="tabpanel">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="main-card mb-3 card">
-                        <div class="card-body"><h5 class="card-title">Pagos Provisionales</h5>
-                            <div class="position-relative form-group">
-                                <div>
-                                    <form id="ppdata" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                        <div class="position-relative form-group">
-                                            <label for="periodo" class="">Periodo</label>
-                                            <input name="periodp" id="periodp" placeholder="Numero de Mes" type="number"
-                                                   min="1"
-                                                   max="12"
-                                                   class="form-control">
-                                        </div>
-                                        <div class="position-relative form-group">
-                                            <label for="aniop" class="">Año</label>
-                                            <input name="aniop" id="anio" placeholder="Año ej. 2020" type="number"
-                                                   min="1970"
-                                                   max="2050"
-                                                   class="form-control">
-                                        </div><div class="position-relative form-group">
-                                            <label for="ppi" class="">Pago Provisional de Impuestos</label>
-                                            <input name="ppi" id="ppi" type="file" accept="application/pdf"
-                                                   class="form-control">
-                                        </div>
-                                        <div class="position-relative form-group">
-                                            <label for="oco" class="">Opinion de Cumplimiento Oficial</label>
-                                            <input name="oco" id="oco"
-                                                   type="file" accept="application/pdf" class="form-control">
-                                        </div>
-                                        <button class="mt-1 btn btn-primary" type="submit">Enviar</button>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -343,33 +338,43 @@ require '../../../Controllers/Config/db2.php';
         })
     </script>
     <script>
-        function validarSUA()
+        function validarNOM()
         {
-            if($("#cdc").val() == ""){
-                toastr.error('El campo Cedula de determinacion de cuentas no pede estar vacio', {timeOut: 5000, progressBar: true});
-                $("#cdc").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            if($("#centrornn").val() == ""){
+                 toastr.error('El campo Centro no pede estar vacio', {timeOut: 5000, progressBar: true});
+                $("#centrornn").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
                 return false;
             }
-            if($("#liquidacion").val() == ""){
-                toastr.error('El campo Resumen de Liquidacion no pede estar vacio', {timeOut: 5000, progressBar: true});
-                $("#liquidacion").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            if($("#mesrn").val() == ""){
+                toastr.error('El campo Mes no pede estar vacio', {timeOut: 5000, progressBar: true});
+                $("#mesrn").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
                 return false;
             }
-            if($("#pagosua").val() == ""){
-                toastr.error('El campo Resumen de Pago SUA no pede estar vacio', {timeOut: 5000, progressBar: true});
-                $("#pagosua").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            if($("#aniorn").val() == ""){
+                toastr.error('El campo Año no pede estar vacio', {timeOut: 5000, progressBar: true});
+                $("#aniorn").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+                return false;
+            }
+            if($("#gr3rn").val() == ""){
+                toastr.error('El campo GR1 no pede estar vacio', {timeOut: 5000, progressBar: true});
+                $("#gr3rn").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+                return false;
+            }
+            if($("#gr1rn").val() == ""){
+                toastr.error('El campo GR3 no pede estar vacio', {timeOut: 5000, progressBar: true});
+                $("#gr1rn").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
                 return false;
             }
             return true;
         }
 
-        $("#suadata").on("submit", function(e){
+        $("#nom35").on("submit", function(e){
             e.preventDefault();
-            if (validarSUA())
+            if (validarNOM())
             {
-                var formData = new FormData(document.getElementById("suadata"));
+                var formData = new FormData(document.getElementById("nom35"));
                 $.ajax({
-                    url: "/Controllers/RH/sua.php",
+                    url: "/Controllers/RHLegal/Nom35.php",
                     type: "POST",
                     dataType: "HTML",
                     data: formData,
@@ -379,7 +384,7 @@ require '../../../Controllers/Config/db2.php';
                 })
                     .done(function () {
                         toastr.info('SUA dado de alta correctamente', {timeOut: 3000, progressBar: true});
-                        $('#suadata').trigger("reset");
+                        $('#nom35').trigger("reset");
                     })
                     .fail(function( jqXHR, textStatus, errorThrown ) {
                         if (jqXHR.status === 0) {
@@ -421,43 +426,43 @@ require '../../../Controllers/Config/db2.php';
         })
     </script>
 <script>
-    function validarPagoProvisional()
+    function validarReciboNomina()
     {
-        if($("#periodop").val() == ""){
+        if($("#nssrn").val() == ""){
             toastr.error('El campo Periodo no pede estar vacio', {timeOut: 5000, progressBar: true});
-            $("#periodop").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            $("#nssrn").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
             return false;
         }
-        if($("#mesp").val() == ""){
+        if($("#nombrern").val() == ""){
             toastr.error('El campo Mes no pede estar vacio', {timeOut: 5000, progressBar: true});
-            $("#mesp").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            $("#nombrern").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
             return false;
         }
-        if($("#anio").val() == ""){
+        if($("#centrorn").val() == ""){
             toastr.error('El campo Año no pede estar vacio', {timeOut: 5000, progressBar: true});
-            $("#anio").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            $("#centrorn").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
             return false;
         }
-        if($("#ppi").val() == ""){
+        if($("#tiendarn").val() == ""){
             toastr.error('El campo Pago provisional no pede estar vacio', {timeOut: 5000, progressBar: true});
-            $("#ppi").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            $("#tiendarn").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
             return false;
         }
-        if($("#oco").val() == ""){
+        if($("#reciboNomina").val() == ""){
             toastr.error('El campo Opinion de Cumplimineto Fiscal no pede estar vacio', {timeOut: 5000, progressBar: true});
-            $("#oco").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            $("#reciboNomina").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
             return false;
         }
         return true;
     }
 
-    $("#ppdata").on("submit", function(e){
+    $("#rnomina").on("submit", function(e){
         e.preventDefault();
-        if (validarPagoProvisional())
+        if (validarReciboNomina())
         {
-            var formData = new FormData(document.getElementById("ppdata"));
+            var formData = new FormData(document.getElementById("rnomina"));
             $.ajax({
-                url: "/Controllers/RH/pprovisionales.php",
+                url: "/Controllers/RHLegal/Rnomina.php",
                 type: "POST",
                 dataType: "HTML",
                 data: formData,
@@ -466,7 +471,7 @@ require '../../../Controllers/Config/db2.php';
                 processData: false
             })
                 .done(function () {
-                    toastr.info('Expediente dado de alta correctamente', {timeOut: 3000, progressBar: true});
+                    toastr.info('El Recibo de Nomina fue  dado de alta correctamente', {timeOut: 3000, progressBar: true});
                     $('#ppdata').trigger("reset");
                 })
                 .fail(function () {
@@ -480,70 +485,70 @@ require '../../../Controllers/Config/db2.php';
 
     })
 </script>
-    <script>
-    function validarSUA(){
-        if($("#nomes").val() == ""){
-            toastr.error('El campo Numero de Mes no puede estar vacio', {timeOut: 5000, progressBar: true});
-            $("#nomes").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
-            return false;
-        }
-        if($("#mes").val() == ""){
-            toastr.error('El campo mes de Usuario no puede estar vacío.', {timeOut: 5000, progressBar: true});
-            $("#mes").focus();
-            return false;
-        }
-        if($("#cdc").val() == ""){
-            toastr.error('El campo Cedula determinacion de cuotas no puede estar vacío.', {timeOut: 5000, progressBar: true});
-            $("#cdc").focus();
-            return false;
-        }
-        if($("#liquidacion").val() == ""){
-            toastr.error('El campo Resumen de Liquidacion no puede estar vacío.', {timeOut: 5000, progressBar: true});
-            $("#liquidacion").focus();
-            return false;
-        }
-        if($("#pagosua").val() == ""){
-            toastr.error('El campo Pago SUA no puede estar vacío.', {timeOut: 5000, progressBar: true});
-            $("#pagosua").focus();
-            return false;
-        }
-        return true;
-    }
-
-    $(document).ready( function() {
-        $("#suabutton").click( function() {
-            if(validarSUA()){
-                var formData = new FormData();
-                formData.append('cdc',$('#cdc').prop('files')[0]);
-                formData.append('liquidacion',$('#liquidacion').prop('files')[1]);
-                formData.append('pagosua',$('#pagosua').prop('files')[0]);
-                formData.append('periodo',$('#periodo'));
-                alert(formData);
-                $.ajax({
-                    url: "Controllers/SUAController.php",
-                    method: 'post',
-                    // data: $("#suadata").serialize(),
-                    data: formData,
-                    processData: false,
-                    headers: {
-                        contentType: 'multipart/form-data'
-                    }
-                })
-                    .done(function(res){
-                        if(res == 1){
-                            toastr.success('El Cliente se dio de alta correctamente.', {timeOut: 5000, progressBar: true});
-                            $('#evaemadata').trigger("reset");
-                        }
-                        else
-                        {
-                            toastr.error('Error al registrar error:1.', {timeOut: 5000, progressBar: true});
-                        }
-                    });
-            }
-            else
-            {
-                toastr.error('Error al registrar.', {timeOut: 5000, progressBar: true});
-            }
-        });
-    });
-    </script>
+<!--    <script>-->
+<!--    function validarSUA(){-->
+<!--        if($("#nomes").val() == ""){-->
+<!--            toastr.error('El campo Numero de Mes no puede estar vacio', {timeOut: 5000, progressBar: true});-->
+<!--            $("#nomes").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.-->
+<!--            return false;-->
+<!--        }-->
+<!--        if($("#mes").val() == ""){-->
+<!--            toastr.error('El campo mes de Usuario no puede estar vacío.', {timeOut: 5000, progressBar: true});-->
+<!--            $("#mes").focus();-->
+<!--            return false;-->
+<!--        }-->
+<!--        if($("#cdc").val() == ""){-->
+<!--            toastr.error('El campo Cedula determinacion de cuotas no puede estar vacío.', {timeOut: 5000, progressBar: true});-->
+<!--            $("#cdc").focus();-->
+<!--            return false;-->
+<!--        }-->
+<!--        if($("#liquidacion").val() == ""){-->
+<!--            toastr.error('El campo Resumen de Liquidacion no puede estar vacío.', {timeOut: 5000, progressBar: true});-->
+<!--            $("#liquidacion").focus();-->
+<!--            return false;-->
+<!--        }-->
+<!--        if($("#pagosua").val() == ""){-->
+<!--            toastr.error('El campo Pago SUA no puede estar vacío.', {timeOut: 5000, progressBar: true});-->
+<!--            $("#pagosua").focus();-->
+<!--            return false;-->
+<!--        }-->
+<!--        return true;-->
+<!--    }-->
+<!---->
+<!--    $(document).ready( function() {-->
+<!--        $("#suabutton").click( function() {-->
+<!--            if(validarSUA()){-->
+<!--                var formData = new FormData();-->
+<!--                formData.append('cdc',$('#cdc').prop('files')[0]);-->
+<!--                formData.append('liquidacion',$('#liquidacion').prop('files')[1]);-->
+<!--                formData.append('pagosua',$('#pagosua').prop('files')[0]);-->
+<!--                formData.append('periodo',$('#periodo'));-->
+<!--                alert(formData);-->
+<!--                $.ajax({-->
+<!--                    url: "Controllers/SUAController.php",-->
+<!--                    method: 'post',-->
+<!--                    // data: $("#suadata").serialize(),-->
+<!--                    data: formData,-->
+<!--                    processData: false,-->
+<!--                    headers: {-->
+<!--                        contentType: 'multipart/form-data'-->
+<!--                    }-->
+<!--                })-->
+<!--                    .done(function(res){-->
+<!--                        if(res == 1){-->
+<!--                            toastr.success('El Cliente se dio de alta correctamente.', {timeOut: 5000, progressBar: true});-->
+<!--                            $('#evaemadata').trigger("reset");-->
+<!--                        }-->
+<!--                        else-->
+<!--                        {-->
+<!--                            toastr.error('Error al registrar error:1.', {timeOut: 5000, progressBar: true});-->
+<!--                        }-->
+<!--                    });-->
+<!--            }-->
+<!--            else-->
+<!--            {-->
+<!--                toastr.error('Error al registrar.', {timeOut: 5000, progressBar: true});-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--    </script>-->

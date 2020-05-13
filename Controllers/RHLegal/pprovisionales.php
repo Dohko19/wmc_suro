@@ -29,7 +29,6 @@ $created_at = Carbon::now()->format('Y-m-d H:i:s');
             echo "Moving...";
             $query = "INSERT INTO pagos_provisionales (periodo, anio, pago_provisional, cumplimiento_oficial, created_at)
                 VALUES('$periodo','$anio','$ppiName', '$ocoName', '$created_at')";
-
             if (mysqli_query($conn,$query))
             {
                 echo 1;

@@ -9,7 +9,9 @@
                     <div class="card-header-title">
                         <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
                         Expediente Electronico
+
                     </div>
+
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
@@ -32,27 +34,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-lg-12">
+                                    <button class="btn btn-warning" id="boton-expelectronico">Obtener Datos</button>
                                     <h5 class="card-title"></h5>
-                                    <table class="mb-0 table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>NSS</th>
-                                            <th>Nombre</th>
-                                            <th>Centro</th>
-                                            <th>Marca</th>
-                                            <th>Expediente</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                        </tr>
-
-                                        </tbody>
+                                        <div id="list-expediente"></div>
                                     </table>
                                 </div>
                             </div>
@@ -63,3 +47,16 @@
         </div>
     </div>
 </div>
+<script>
+    $("#boton-expelectronico").on("click", getExp);
+    function getExp(){
+        $.ajax({
+            url: '/Controllers/listarExpedienteElectronico.php',
+            type:'get',
+            success: function (event) {
+                document.getElementById('list-expediente').innerHTML = event;
+
+            }
+        })
+    }
+</script>

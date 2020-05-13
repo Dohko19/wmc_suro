@@ -13,8 +13,28 @@
 
 
 -- Dumping database structure for wmc_suro
-CREATE DATABASE IF NOT EXISTS `wmc_suro` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `wmc_suro`;
+CREATE DATABASE IF NOT EXISTS `wwserv_suro` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `wwserv_suro`;
+
+-- Dumping structure for table wmc_suro.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+                                          `id` int(11) NOT NULL AUTO_INCREMENT,
+                                          `username` varchar(100) NOT NULL,
+                                          `nombre` varchar(100) NOT NULL,
+                                          `avatar` varchar(255) DEFAULT NULL,
+                                          `password` varchar(255) DEFAULT NULL,
+                                          `permisos` int(11) DEFAULT NULL,
+                                          `created_at` varchar(50) DEFAULT NULL,
+                                          PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table wmc_suro.usuarios: ~2 rows (approximately)
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` (`id`, `username`, `nombre`, `avatar`, `password`, `permisos`, `created_at`) VALUES
+(1, 'daniel.trejo', 'Daniel', NULL, '4297f44b13955235245b2497399d7a93', 1, NULL),
+(7, 'asdads', 'asasd', NULL, 'a8f5f167f44f4964e6c998dee827110c', 1, NULL);
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+
 
 -- Dumping structure for table wmc_suro.clientes
 CREATE TABLE IF NOT EXISTS `clientes` (
@@ -170,24 +190,6 @@ INSERT INTO `sucursal` (`id`, `nombre`, `imagen`, `created_at`, `anio`, `mes`) V
 	(6, 'asdasd', '0', '2020-05-08 16:25:34', '2020', '5');
 /*!40000 ALTER TABLE `sucursal` ENABLE KEYS */;
 
--- Dumping structure for table wmc_suro.usuarios
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(100) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `avatar` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `permisos` int(11) DEFAULT NULL,
-  `created_at` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
-
--- Dumping data for table wmc_suro.usuarios: ~2 rows (approximately)
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id`, `username`, `nombre`, `avatar`, `password`, `permisos`, `created_at`) VALUES
-	(1, 'daniel.trejo', 'Daniel', NULL, '4297f44b13955235245b2497399d7a93', 1, NULL),
-	(7, 'asdads', 'asasd', NULL, 'a8f5f167f44f4964e6c998dee827110c', 1, NULL);
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

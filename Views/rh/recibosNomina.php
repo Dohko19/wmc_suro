@@ -24,27 +24,7 @@
                             <div class="row">
                                 <div class="col-md-12 col-lg-12">
                                     <h5 class="card-title"></h5>
-                                    <table class="mb-0 table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>NSS</th>
-                                            <th>Nombre</th>
-                                            <th>Centro</th>
-                                            <th>Tienda</th>
-                                            <th>Recibos Nómina</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                        </tr>
 
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -53,3 +33,16 @@
             </div>
         </div>
     </div>
+    <script>
+        $("#boton-recibonomina").on("click", getRN);
+        function getRN(){
+            $.ajax({
+                url: '/Controllers/listarExpedienteElectronico.php',
+                type:'get',
+                success: function (event) {
+                    document.getElementById('list-expediente').innerHTML = event;
+
+                }
+            })
+        }
+    </script>
