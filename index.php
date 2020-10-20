@@ -1,6 +1,9 @@
 <?php
-include_once './Models/User.php';
-include_once './Controllers/Config/user_session.php';
+header("Cache-Control: no-cache, must-revalidate");
+header("Pragma: no-cache");
+include_once 'Models/User.php';
+include_once 'Controllers/Config/user_session.php';
+
 
 $userSession = new UserSession();
 $user = new User();

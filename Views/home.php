@@ -1,4 +1,6 @@
 <?php
+header("Cache-Control: no-cache, must-revalidate");
+header("Pragma: no-cache");
 require './Controllers/Config/Carbon/autoload.php';
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
@@ -169,6 +171,12 @@ date_default_timezone_set('America/Mexico_City');
                             <a href="/" class="mm-active">
                                 <i class="metismenu-icon pe-7s-rocket"></i>
                                 Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Views/prueba.php" class="mm-active">
+                                <i class="metismenu-icon pe-7s-rocket"></i>
+                                Prueba de   
                             </a>
                         </li>
                         <li class="app-sidebar__heading">Consultas</li>

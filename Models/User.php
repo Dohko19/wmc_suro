@@ -1,5 +1,5 @@
 <?php
-include_once './Controllers/Config/db.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/Controllers/Config/db.php";
 class User extends DB
 {
     private $nombre;
