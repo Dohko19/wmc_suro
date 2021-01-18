@@ -325,41 +325,41 @@ $res = mysqli_query($conn, $query);
                     contentType: false,
                     processData: false
                 })
-                    .done(function () {
-                        toastr.info('SUA dado de alta correctamente', {timeOut: 3000, progressBar: true});
-                        $('#suadata').trigger("reset");
-                    })
-                    .fail(function( jqXHR, textStatus, errorThrown ) {
-                        if (jqXHR.status === 0) {
+                .done(function () {
+                    toastr.info('SUA dado de alta correctamente', {timeOut: 3000, progressBar: true});
+                    $('#suadata').trigger("reset");
+                })
+                .fail(function( jqXHR, textStatus, errorThrown ) {
+                    if (jqXHR.status === 0) {
 
-                            toastr.error('Not connect: Verify Network.');
+                        toastr.error('Not connect: Verify Network.');
 
-                        } else if (jqXHR.status == 404) {
+                    } else if (jqXHR.status == 404) {
 
-                            toastr.error('Requested page not found [404]');
+                        toastr.error('Requested page not found [404]');
 
-                        } else if (jqXHR.status == 500) {
+                    } else if (jqXHR.status == 500) {
 
-                            toastr.error('Internal Server Error [500].');
+                        toastr.error('Internal Server Error [500].');
 
-                        } else if (textStatus === 'parsererror') {
+                    } else if (textStatus === 'parsererror') {
 
-                            toastr.error('Requested JSON parse failed.');
+                        toastr.error('Requested JSON parse failed.');
 
-                        } else if (textStatus === 'timeout') {
+                    } else if (textStatus === 'timeout') {
 
-                            toastr.error('Time out error.');
+                        toastr.error('Time out error.');
 
-                        } else if (textStatus === 'abort') {
+                    } else if (textStatus === 'abort') {
 
-                            toastr.error('aborted.');
+                        toastr.error('aborted.');
 
-                        } else {
+                    } else {
 
-                            toastr.error('Uncaught Error: ' + jqXHR.responseText);
+                        toastr.error('Uncaught Error: ' + jqXHR.responseText);
 
-                        }
-                    })
+                    }
+                })
             }
             else
             {
